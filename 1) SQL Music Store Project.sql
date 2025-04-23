@@ -1,20 +1,20 @@
---1) Creating Database
+-- Creating Database
 
 CREATE DATABASE Music_Store_Project ;
 USE Music_Store_Project;
 
 --/////////////////////////////////////////////////
 
---2) ANALYSIS
+-- ANALYSIS
 
-/* Q1: Who is the senior most employee, find name and job title */
+/*  Who is the senior most employee, find name and job title */
 
 SELECT TOP 1 CONCAT_WS(' ',first_name,last_name)Name , title
 FROM employee
 ORDER BY levels DESC;
 
 
-/* Q2: Which countries have the most Invoices? */
+/* Which countries have the most Invoices? */
 
 WITH CTE AS(
 SELECT billing_country , COUNT(invoice_id)cnt , dense_rank() OVER(ORDER BY COUNT(invoice_id) DESC)ran
@@ -25,7 +25,7 @@ SELECT billing_country , cnt
 FROM CTE
 WHERE ran = 1;
 
-/* Q3: What are top 3 values of total invoice? */
+/*  What are top 3 values of total invoice? */
 
 WITH CTE AS(
 SELECT total, dense_rank() OVER(ORDER BY total DESC)ran
@@ -35,7 +35,7 @@ SELECT DISTINCT(total)Top_3_values FROM CTE
 WHERE ran IN(1,2,3)
 ORDER BY total DESC;
 
-/* Q4: Which city has the best customers? We would like to throw a promotional Music Festival in the city we made the most money. 
+/* Which city has the best customers? We would like to throw a promotional Music Festival in the city we made the most money. 
 Write a query that returns one city that has the highest sum of invoice totals. 
 Return both the city name & sum of all invoice totals */
 
@@ -44,7 +44,7 @@ FROM invoice
 GROUP BY billing_city
 ORDER BY InvoiceTotal DESC;
 
-/* Q5: Who is the best customer? The customer who has spent the most money will be declared the best customer. 
+/* Who is the best customer? The customer who has spent the most money will be declared the best customer. 
 Write a query that returns the person who has spent the most money.*/
 
 SELECT TOP 1 C.customer_id,CONCAT_WS(' ',C.first_name,C.last_name)Cust_Name, SUM(I.total)TotalSpent
@@ -54,7 +54,7 @@ ON C.customer_id = I.customer_id
 GROUP BY C.customer_id, C.first_name, C.last_name
 ORDER BY TotalSpent DESC;
 
-/* Q6(A): We want to find out the most popular music Genre for each country. We determine the most popular genre as the genre 
+/*  We want to find out the most popular music Genre for each country. We determine the most popular genre as the genre 
 with the highest amount of purchases. Write a query that returns each country along with the top Genre. For countries where 
 the maximum number of purchases is shared return all Genres. */
 
@@ -72,7 +72,7 @@ GROUP BY I.billing_country, G.name)
 SELECT Country, Genre_name FROM CTE
 WHERE ran = 1;
 
-/* Q6(B): Write query to return the first name, last name, email & Genre of all Rock Music listeners. 
+/* Write query to return the first name, last name, email & Genre of all Rock Music listeners. 
 Return your list ordered alphabetically by email starting with A. */
 
 SELECT DISTINCT C.first_name, C.last_name, C.email, (G.name)genre_name
@@ -88,7 +88,7 @@ ON T.genre_id = G.genre_id
 WHERE G.name = 'Rock'
 ORDER BY C.email;
 
-/* Q7: Let's invite the artists who have written the most rock music in our dataset. 
+/*  Let's invite the artists who have written the most rock music in our dataset. 
 Write a query that returns the Artist name and total track count of the top 10 rock bands. */
 
 SELECT TOP 10 (A.name)ArtistName, COUNT(P.playlist_id)total_track_count
@@ -105,7 +105,7 @@ WHERE G.name ='Rock'
 GROUP BY A.name
 ORDER BY total_track_count DESC;
 
-/* Q8: Return all the track names that have a song length longer than the average song length. 
+/* Return all the track names that have a song length longer than the average song length. 
 Return the Name and Milliseconds for each track. Order by the song length with the longest songs listed first. */
 
 SELECT name, milliseconds
@@ -113,7 +113,7 @@ FROM track
 WHERE milliseconds > (SELECT AVG(milliseconds) FROM track)
 ORDER BY milliseconds DESC;
 
-/* Q9: Find how much amount spent by each customer on artists? Write a query to return customer name, artist name and total spent */
+/* Find how much amount spent by each customer on artists? Write a query to return customer name, artist name and total spent */
 
 SELECT CONCAT_WS(' ', C.first_name, C.last_name)cust_name, (A.name)artist_name, SUM(IL.unit_price * IL.quantity)total_spent
 FROM customer C
@@ -130,7 +130,7 @@ ON AL.artist_id = A.artist_id
 GROUP BY C.first_name, C.last_name, A.name
 ORDER BY total_spent DESC
 
-/* Q10: Write a query that determines the customer that has spent the most on music for each country. 
+/* Write a query that determines the customer that has spent the most on music for each country. 
 Write a query that returns the country along with the top customer and how much they spent. 
 For countries where the top amount spent is shared, provide all customers who spent this amount. */
 
