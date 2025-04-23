@@ -2,20 +2,32 @@
 # Objective:-
 - ##### In this project I have examine the dataset with SQL and help the store understand its business growth.
 ## Features -
-##### 1. User interactive Presentation, can be seen in my repository 
-##### 2. Who is the senior most employee, find name and job title? 
-##### 3. Which countries have the most Invoices?
-##### 4. What are top 3 values of total invoice?
-##### 5. Which city has the best customers? We would like to throw a promotional Music Festival in the city we made the most money. Write a query that returns one city            that has the highest sum of invoice totals. Return both the city name & sum of all invoice totals
-##### 6. Who is the best customer? The customer who has spent the most money will be declared the best customer. Write a query that returns the person who has spent the most money.
-##### 7. We want to find out the most popular music Genre for each country. We determine the most popular genre as the genre with the highest amount of purchases. Write a query that returns each country along with the top Genre. For countries where the maximum number of purchases is shared return all Genres.
-##### 8. Write query to return the first name, last name, email & Genre of all Rock Music listeners. Return your list ordered alphabetically by email starting with A. 
-##### 9. Let's invite the artists who have written the most rock music in our dataset. Write a query that returns the Artist name and total track count of the top 10 rock bands. 
-##### 10. Return all the track names that have a song length longer than the average song length. Return the Name and Milliseconds for each track. Order by the song length with the longest songs listed first.
-##### 11. Find how much amount spent by each customer on artists? Write a query to return customer name, artist name and total spent.
-##### 12. Write a query that determines the customer that has spent the most on music for each country. Write a query that returns the country along with the top customer and how much they spent. For countries where the top amount spent is shared, provide all customers who spent this amount.
+An interactive presentation is available in my repository for review.
+
+Identify the employee with the highest rank in the company — display their name and job title.
+
+Which countries have generated the highest number of invoices?
+
+List the top three highest total invoice values.
+
+Which city has brought in the most revenue? Craft a query to fetch the city with the highest total invoice value, including both the city name and the total amount.
+
+Who is the top-spending customer? Retrieve the name of the customer who has made the largest total purchase.
+
+Determine the most popular music genre for each country based on purchase volume. If there’s a tie for the highest, include all genres with the same maximum count.
+
+Write a query to get the first name, last name, email, and preferred genre of all Rock music listeners, sorted by email in ascending order.
+
+Let’s shortlist the artists who’ve produced the most Rock tracks. Write a query that shows the artist’s name and the count of their Rock tracks, limited to the top 10.
+
+Fetch the names of tracks whose duration exceeds the average track length. Include both the track name and its duration in milliseconds, sorted from longest to shortest.
+
+Calculate and display how much each customer has spent on every artist. Return the customer’s name, artist’s name, and total amount spent.
+
+Identify the highest-spending customer for each country. Write a query to return the country name, the top customer(s), and the total amount spent. If there’s a tie, include all customers with the highest value.
+
 ## Tech Stack Used 
-![SQL](https://img.icons8.com/arcade/256/sql.png)
-![Excel](https://img.icons8.com/color/256/microsoft-excel-2019.png)
+!SQL
+!Excel
 ## DATA OVERVIEW
 ![image](https://github.com/gauraishwarya/Music-Store-Data-Analysis-Project-SQL/blob/main/schema_diagram.png?raw=true)
